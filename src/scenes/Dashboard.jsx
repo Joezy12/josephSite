@@ -4,24 +4,44 @@ import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 import { DownloadOutlined } from "@mui/icons-material";
 import LineChart from "../dashcomponent/LineChart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebaseAuth";
+import { doc, getDoc } from 'firebase/firestore';
+import { toast } from "react-toastify";
 
 
 function DashBoard() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+
+    const [userDetails, setUserDetails] = useState(null)
+
+    const fetchUserData = async (e)=> {
+        auth.onAuthStateChanged(async(user)=> {
+            console.log(user);
+            const docRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(docRef);
+            if(docSnap.exists()){
+                setUserDetails(docSnap.data())
+                console.log(docSnap.data())
+            }
+        })
+    };
+
+    useEffect(()=> {
+        fetchUserData()
+    }, [])
 
     const accountDetails = [
         {
-            title: "My Investment Asset",
+            title: "Total Balance",
             icon: "bi-person-fill",
             amount: "0.00",
             rate: "120",
             color: "#873DCF"
         },
         {
-            title: "Yearly Profit",
+            title: "Investment balance",
             icon: "bi-person-fill",
             amount: "0.00",
             rate: "40",
@@ -37,32 +57,6 @@ function DashBoard() {
     ];
 
     const transactionHistory = [
-        {
-            type: "deposit",
-            date: "23-07-2024",
-            amount: "24,000",
-            status: "success"
-        },
-        {
-            type: "withdrawal",
-            date: "23-07-2024",
-            amount: "2,000",
-            status: "success",
-        },
-        {
-            type: "withdrawal",
-            date: "23-07-2024",
-            amount: "2,000",
-            status: "success",
-        },
-        {
-            type: "withdrawal",
-            date: "23-07-2024",
-            amount: "2,000",
-            status: "success",
-        },
-
-
     ]
 
     const showAccountDetails = accountDetails.map((each) => {
@@ -97,8 +91,9 @@ function DashBoard() {
 
     return (
         <Box m="20px">
-            <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Header title={`hello ${user.Fname}`} subtitle="welcome to your dashboard" />
+           {userDetails ? <div>
+             <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Header title={`Hello ${userDetails.Fname}`} subtitle="welcome to your dashboard" />
             </Box>
             <div className="investment-amounts">
                 {showAccountDetails}
@@ -106,37 +101,38 @@ function DashBoard() {
             <div className="charts" >
                 <Box sx={{ backgroundColor: colors.primary[400] }} width="40%" height="255px" borderRadius="5px" overflow="auto" className="histogo">
                     <Typography variant="h3" fontSize="19px" fontWeight="800" padding="9px 13px" >Recent Transactions</Typography>
-                    {showHistory}
+                    {transactionHistory.length < 1 ? <p className="middle">No transaction  yet</p> : showHistory }
                 </Box>
-                <Box 
-                backgroundColor={colors.primary[400]}
-                padding="10px 15px"
-                borderRadius="6px"
+                <Box
+                    backgroundColor={colors.primary[400]}
+                    padding="10px 15px"
+                    borderRadius="6px"
                 >
                     <Box display="flex"
-                    justifyContent="space-between"
-                   >
-                    <Box>
-                        <Typography variant="h5" fontWeight="600" color={colors.grey[100]}>
-                            Revenue Generated
-                        </Typography>
-                        <Typography variant="h3" fontWeight="500" color={colors.greenAccent[500]}>
-                            $44,000
-                        </Typography>
-                    </Box>
-                    <Box>
-                        <IconButton>
-                         <DownloadOutlined 
-                         sx={{fontSize: "26px", color: colors.greenAccent[500]}}
-                         />
-                        </IconButton>
-                    </Box>
+                        justifyContent="space-between"
+                    >
+                        <Box>
+                            <Typography variant="h5" fontWeight="600" color={colors.grey[100]}>
+                                Revenue Generated
+                            </Typography>
+                            <Typography variant="h3" fontWeight="500" color={colors.greenAccent[500]}>
+                                $0.00
+                            </Typography>
+                        </Box>
+                        <Box>
+                            <IconButton>
+                                <DownloadOutlined
+                                    sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                                />
+                            </IconButton>
+                        </Box>
                     </Box>
                     <Box height="200px" mt="-20px" width="565px" className="line">
                         <LineChart isDashboard={true} />
                     </Box>
                 </Box>
             </div>
+           </div>: <div className="load"><span class="loader"></span></div>}
         </Box>
     )
 }

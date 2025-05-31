@@ -77,6 +77,7 @@ const Team = () => {
              rows={mockDataTeam}
              columns={columns}
             />
+            <h1 className="tran">No transaction Yet</h1>
         </Box>
     </Box>
  )

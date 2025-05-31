@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
@@ -16,6 +16,11 @@ import PieChartOutlinedIcon from "@mui/icons-material/PieChartOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import { auth, db } from "../../firebaseAuth";
+import { doc, getDoc } from 'firebase/firestore';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -23,7 +28,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     return (
         <NavLink to={to} className="nav-link"><MenuItem active={selected === title} style={{ color: colors.grey[100] }} onClick={() => setSelected(title)} icon={icon}>
             <Typography>{title}</Typography>
-            
+
         </MenuItem>
         </NavLink>
     )
@@ -34,6 +39,36 @@ function SideBar() {
     const colors = tokens(theme.palette.mode);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard")
+    const navigate = useNavigate();
+
+
+    const [userDetails, setUserDetails] = useState(null)
+    const fetchUserData = async (e) => {
+        auth.onAuthStateChanged(async (user) => {
+            console.log(user);
+            const docRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                setUserDetails(docSnap.data())
+                console.log(docSnap.data())
+            }
+        })
+    };
+
+    useEffect(() => {
+        fetchUserData()
+    }, [])
+
+
+    async function logOut() {
+        try {
+            await auth.signOut()
+            navigate("..")
+        } catch (error) {
+            toast.error(error, { position: "top-center" })
+        }
+    }
+
     return (
         <Box
             sx={{
@@ -74,7 +109,7 @@ function SideBar() {
                                     ml="15px"
                                 >
                                     <Typography variant="h3" color={colors.grey[100]}>
-                                        BigBankFX
+                                        FCFG
                                     </Typography>
                                     <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                                         <MenuOutlinedIcon />
@@ -92,58 +127,59 @@ function SideBar() {
                                     alt="profile-user"
                                     width="100px"
                                     height="100px"
-                                    src={'../../public/banner.jfif'}
+                                    src={'https://www.shutterstock.com/image-vector/avatar-gender-neutral-silhouette-vector-600nw-2470054311.jpg'}
                                     style={{ cursor: "pointer", borderRadius: "50%" }}
                                 />
                             </Box>
 
                             <Box textAlign="center">
-                                <Typography variant="h2" color={colors.grey[100]} fontWeight="bold" sx={{ m: "10px 0 0 0" }}>Ed Roh </Typography>
-                                <Typography variant="h5" color={colors.greenAccent[500]}>Vp Fancy Admin</Typography>
+                                <Typography variant="h2" color={colors.grey[100]} fontWeight="bold" sx={{ m: "10px 0 0 0" }}>{userDetails ? userDetails.Fname : ""}</Typography>
+                                <Typography variant="h5" color={colors.greenAccent[500]}>customer</Typography>
                             </Box>
                         </Box>
                     )}
 
                     {/*Menu items */}
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-                    <Item 
-                    title="Dashboard"
-                    to="/dash"
-                    icon={<HomeOutlinedIcon />}
-                    selected={selected}
-                    setSelected={setSelected}
-                    />
-                   
-                     <Item 
-                    title="Transaction History"
-                    to="/dash/history"
-                    icon={<PeopleOutlinedIcon/>}
-                    selected={selected}
-                    setSelected={setSelected}
-                    />
-                     <Item 
-                    title="Deposit"
-                    to="/dash/deposit"
-                    icon={<CalendarTodayOutlinedIcon/>}
-                    selected={selected}
-                    setSelected={setSelected}
-                    />
-                     <Item 
-                    title="Withdrawal"
-                    to="/dash/withdrawal"
-                    icon={<ReceiptOutlinedIcon />}
-                    selected={selected}
-                    setSelected={setSelected}
-                    />
-                 
-                     <Item 
-                    title="Log Out"
-                    to="/form"
-                    icon={<PersonOutlinedIcon />}
-                    selected={selected}
-                    setSelected={setSelected}
-                    />
-                    
+                        <Item
+                            title="Dashboard"
+                            to="/dash"
+                            icon={<HomeOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+
+                        <Item
+                            title="Transaction History"
+                            to="/dash/history"
+                            icon={<PeopleOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+                        {/* <Item
+                            title="Deposit"
+                            to="/dash/deposit"
+                            icon={<CalendarTodayOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        /> */}
+                        <Item
+                            title="Withdrawal"
+                            to="/dash/withdrawal"
+                            icon={<ReceiptOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
+
+                        {/* <Item
+                            title="Log Out"
+                            to="/form"
+                            icon={<PersonOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+
+                        /> */}
+
                     </Box>
 
                 </Menu>

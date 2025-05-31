@@ -6,10 +6,14 @@ import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import { NavLink } from "react-router-dom";
+import { auth } from "../firebaseAuth";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function SidePhoneNav(props) {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const navigate = useNavigate()
 
     const navStyle = {
         transform: props.navOpen ? "translate(0px, 0px)" : "translate(-600px, 0px)",
@@ -18,6 +22,17 @@ function SidePhoneNav(props) {
 
     const navLinker = {
         color: colors.primary[100],
+    }
+
+    const logOut = async()=> {
+        try{
+         await auth.signOut();
+         console.log("signed out")
+         navigate('..')
+         toast.success("logged Out", {position:"top-center"})
+        }catch(error) {
+        toast.error(error.message, {position: "top-center"})
+        }
     }
 
     return (
@@ -36,16 +51,16 @@ function SidePhoneNav(props) {
                     <p>Transaction History</p>
                 </div>
                 </NavLink>
-                <NavLink to="/dash/deposit" className="linkor" style={navLinker} onClick={props.openNav}><div className="p-link">
+                {/* <NavLink to="/dash/deposit" className="linkor" style={navLinker} onClick={props.openNav}><div className="p-link">
                     <ContactsOutlinedIcon className="phoneI" />
                     <p>Deposit</p>
                 </div>
-                </NavLink>
+                </NavLink> */}
                 <div className="p-link">
                     <ReceiptOutlinedIcon className="phoneI" />
                     <p>Withdrawal</p>
                 </div>
-                <div className="p-link">
+                <div className="p-link" onClick={logOut}>
                     <PersonOutlinedIcon className="phoneI" />
                     <p>Log out</p>
                 </div>

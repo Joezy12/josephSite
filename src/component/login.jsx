@@ -3,6 +3,9 @@ import Navbar from "./navbar";
 import { NavLink } from "react-router-dom";
 import { Password } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseAuth";
+import { toast } from "react-toastify";
 
 
 function Login(prop) {
@@ -25,9 +28,12 @@ function Login(prop) {
                 ...prev,
                 [event.target.name]: event.target.value,
             }
+
         })
-        console.log(logInfo)
+
     }
+
+    const [showLoad, setShowLoad] = useState(false)
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -36,46 +42,31 @@ function Login(prop) {
             return !prev;
         })
     }
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
-    console.log(user)
 
-    function submitLog(event) {
-        event.preventDefault();
-        if (user.email == logInfo.email && user.password == logInfo.password) {
-           setSuccessMessage("welcome back")
-           setShowSuccess(true)
-            setTimeout(() => {
-                setShowSuccess(false)
-                navigate("../dash")
-            }, 3000)
-        } else {
-            setErrorMessage("incorrect login details")
-            setShowError(true)
-            setTimeout(() => {
-               setShowError(false)
-            }, 3000)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setShowLoad(true)
+        try {
+            await signInWithEmailAndPassword(auth, logInfo.email, logInfo.password)
+            toast.success("user logged in successfully", { position: "top-center" })
+            navigate("../dash")
+        } catch (error) {
+            setShowLoad(false)
+            toast.error(error.message, { position: "top-center" })
         }
     }
 
-    const successStyle = {
-        position: "fixed",
-        marginTop: showSuccess ? "0px" : "-200px",
-        width: "100%",
-    }
-      const errorStyle = {
-        position: "fixed",
-        marginTop: showError ? "0px" : "-200px",
-        width: "100%",
-    }
+
+
     return (
 
         <section>
-              <div className="error-box" style={errorStyle}>{errorMessage}</div>
-             <div className="success-box" style={successStyle}>{successMessage}</div>
+
             <Navbar />
-            {prop.loadState ? <div className="loader-box">
-                <div className="loader"></div>
-            </div> : ""}
+           {showLoad ?  <div className="login-loader">
+                <span className="loader"></span>
+            </div>: ""}
+
             <div className="login">
                 <div className="login-left">
                     <h1>Welcome <br /> Back</h1>
@@ -88,11 +79,9 @@ function Login(prop) {
                     </div>
                 </div>
                 <div className="login-right">
-                    {prop.showErr ? <div className="error-box">
-                        <p>{prop.errText}</p>
-                    </div> : ""}
+
                     <h1>Sign in</h1>
-                    <form className="login-form" onSubmit={submitLog}>
+                    <form className="login-form" onSubmit={handleSubmit}>
                         <div className="fields">
                             <p>Email Address </p>
                             <input type="email" name="email" onChange={gatherLogFunc} />

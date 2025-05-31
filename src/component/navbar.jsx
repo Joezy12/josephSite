@@ -51,7 +51,7 @@ function Navbar() {
                 </div>
                 <div className="sign-btns">
                 <NavLink to="../login" className="navlink" onClick={open}> <button className="login-btn">Login</button></NavLink>  
-                <NavLink to="../signup" className="navlink" onClick={open}>   <button className="sign-btn">Sign Up</button> </NavLink>
+                <NavLink to="../signup" className="navlink" onClick={open}>   <button className="sign-btn">Sign Up </button> </NavLink>
                 </div>
             </div>
             <div className='phone-nav'>

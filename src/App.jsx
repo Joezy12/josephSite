@@ -17,6 +17,7 @@ import Line from "./scenes/Line";
 import Deposit from "./scenes/deposit/depositIndex";
 import Withdrawal from "./scenes/withdrawal/withdrawalIndex";
 import Notification from "./scenes/notifications/notificationIndex";
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -45,6 +46,7 @@ function App() {
     
 
   </Routes>
+  <ToastContainer />
 
 </section>
   ) 

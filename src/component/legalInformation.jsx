@@ -11,7 +11,7 @@ function LegalInformation() {
             <h3>Information</h3>
 
             <p>
-            With over $5.3 Trillion traded daily in the market, we are dedicated to giving our clients their own share of the profit daily. As a leading global market maker, SmartfinanceFX has one of the World’s Largest Independent traders and fund managers with clients from different parts of the World. Today, as a successful trade investment and asset management company, we are trusted by thousands of clients. Our sterling reputation, dedication to meeting our clients’ needs and innovative approach to business development are some driving forces behind our success.
+           FCFG is a licensed financial institution regulated by smartfinancefx, operating in accordance with applicable banking and financial services laws in [Country/Region]. We adhere to all relevant laws, regulations, and industry standards to ensure the highest level of transparency, security, and integrity in our services.
             </p>
 
 
