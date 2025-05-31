@@ -1949,6 +1949,24 @@ input:focus + label {
 }
 
 
+.b {
+  font-size: 40px;
+}
+
+.space {
+  margin-top: 20px;
+}
+
+.with {
+  width: 100%;
+  height: 45px;
+  background-color: #2C7BE5;
+  border: none;
+  color: white;
+  border-radius: 12px;
+  margin-top: 50px;
+}
+
 .tran {
   margin-top: 20px;
   font-size: 22px;

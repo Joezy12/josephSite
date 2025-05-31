@@ -1,5 +1,7 @@
 
 import girl from '../../public/manhand.png'
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Hero() {
     const styler = {
@@ -10,6 +12,10 @@ function Hero() {
 
     }
 
+    const navigate = useNavigate();
+
+    
+
     return (
         <div className="hero-section">
             <div className="hero-left">
@@ -18,7 +24,7 @@ function Hero() {
               <p className="bright-p">Invest and earn <br /> with <span>Up to 2.5% - 5.0% daily </span>profit</p>
               <div className='hero-sign'>
                   <input type="email" placeholder='your@gmail.com' />
-                  <button>Get Started</button>
+               <Link to="signup"> <button>Get Started</button></Link>  
 
               </div>
             </div>

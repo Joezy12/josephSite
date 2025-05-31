@@ -43,7 +43,7 @@ function MainPage() {
               {/* <Route path="/bar" element={<Bar />} /> */}
               {/* <Route path="/pie" element={<Pie/>} /> */}
               <Route path="/deposit" element={<Deposit />} />
-              <Route path="withdrawal" element={<Withdrawal />} />
+              <Route path="/withdrawal" element={<Withdrawal />} />
               {/* <Route path="/faq" element={<DashBoard />} /> */}
               {/* <Route path="/geography" element={<Geography/>} /> */}
               <Route path="/notification" element={<Notification />} />

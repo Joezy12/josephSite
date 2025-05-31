@@ -56,10 +56,10 @@ function SidePhoneNav(props) {
                     <p>Deposit</p>
                 </div>
                 </NavLink> */}
-                <div className="p-link">
+               <NavLink to="/dash/withdrawal" style={navLinker} onClick={props.openNav}><div className="p-link">
                     <ReceiptOutlinedIcon className="phoneI" />
                     <p>Withdrawal</p>
-                </div>
+                </div></NavLink> 
                 <div className="p-link" onClick={logOut}>
                     <PersonOutlinedIcon className="phoneI" />
                     <p>Log out</p>
