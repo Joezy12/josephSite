@@ -133,6 +133,7 @@ function SignUp(prop) {
                         {showPassword ? <i className="bi-eye"></i>: <i className="bi-eye-slash"></i>}
                     </div>
                     </div>
+                    <NavLink className="whiter" to="../login">Already have an Account? Log in.</NavLink>
 
                     <button className="sign-btn2 ran">SIGN UP</button>
 

@@ -101,7 +101,7 @@ function Login(prop) {
 
                         <button>Sign in now</button>
 
-                        <h2>Lost your password?</h2>
+                        <NavLink className="whiter" to="../signup">Don't have an account? Sign up</NavLink>
 
                         <h3>By clicking on "Sign in now" you agree to <u>Terms of service</u> | <u>Privacy Policy</u></h3>
 

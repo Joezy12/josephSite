@@ -37,21 +37,21 @@ function DashBoard() {
             title: "Total Balance",
             icon: "bi-person-fill",
             amount: "0.00",
-            rate: "120",
+            rate: "0.00",
             color: "#873DCF"
         },
         {
             title: "Investment balance",
             icon: "bi-person-fill",
             amount: "0.00",
-            rate: "40",
+            rate: "0.00",
             color: "#286B91"
         },
         {
             title: "Profit Margin",
             icon: "bi-person-fill",
             amount: "0.00",
-            rate: "300",
+            rate: "0.00",
             color: "#1F6A5D"
         },
     ];
