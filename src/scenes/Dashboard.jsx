@@ -14,6 +14,10 @@ function DashBoard() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
+  useEffect(()=> {
+      toast.success("Mavis wancysk sent you $20,000 ")
+  }, [])
+
     const [userDetails, setUserDetails] = useState(null)
 
     const fetchUserData = async (e)=> {
@@ -36,7 +40,7 @@ function DashBoard() {
         {
             title: "Total Balance",
             icon: "bi-person-fill",
-            amount: "0.00",
+            amount: "20,000.00",
             rate: "0.00",
             color: "#873DCF"
         },

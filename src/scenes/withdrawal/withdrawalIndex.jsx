@@ -72,7 +72,7 @@ function Withdrawal() {
 
 
             <Header title="Withdrawal" subtitle="" />
-            <h1 className="b">Balance: $0.00</h1>
+            <h1 className="b">Balance: $20,000.00</h1>
             <div className="withdraw-box">
                 <div className="withdraw-form" style={boxStyle}>
                     <div className="enter-amount">
