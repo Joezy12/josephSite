@@ -56,6 +56,9 @@ function SignUp(prop) {
                             email: signInfo.email,
                             password: signInfo.cPassword,
                             cPassword: signInfo.cPassword,
+                            accBalance: 0,
+                            cryptoAddress: "",
+                            
                         })
                     }
                     toast.success("registered successfully", { position: 'top-center' })

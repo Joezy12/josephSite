@@ -35,13 +35,7 @@ function TopBar(prop) {
 
 
             <Box display="flex" className="top-icon-box">
-                <IconButton onClick={colorMode.toggleColorMode}>
-                    {theme.palette.mode === "dark" ? (
-                        <DarkModeOutlinedIcon className="top-icons" />
-                    ) : (
-                        <LightModeOutlinedIcon className="top-icons" />
-                    )}
-                </IconButton>
+               
                 <NavLink to="/dash/notification">
                     <IconButton>
                         <NotificationsOutlinedIcon className="top-icons" />

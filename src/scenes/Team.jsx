@@ -6,10 +6,18 @@ import  AdminPanelSettingsOutlinedIcon  from "@mui/icons-material/AdminPanelSett
 import  LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import  SecurityOutlinedIcon   from "@mui/icons-material/SecurityOutlined";
 import Header from "../dashcomponent/Header";
+import nodata from "../../public/woman.svg"
 
 const Team = () => {
  const theme = useTheme();
  const colors = tokens(theme.palette.mode);
+
+ const noData = {
+   background: `url(${nodata})`,
+   backgroundSize: "cover",
+   backgroundPosition: "center"
+
+ }
 
  const columns = [
 
@@ -47,7 +55,7 @@ const Team = () => {
 
  return (
     <Box m="20px">
-        <Header title="TRANSACION HISTORY" subtitle="Managing the Team Members"/>
+        <Header title="HISTORY" subtitle=""/>
         <Box
         m="40px 0 0 0"
       sx={{
@@ -77,6 +85,9 @@ const Team = () => {
              rows={mockDataTeam}
              columns={columns}
             /> */}
+            <div className="no-data" style={noData}>
+
+            </div>
             <h1 className="tran">No transaction Yet</h1>
         </Box>
     </Box>

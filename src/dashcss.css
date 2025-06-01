@@ -368,11 +368,16 @@
     gap: 1rem;
 }
 
+.debit {
+    background-color: black;
+    color: white;
+}
+
 .fee {
     position: absolute;
     width: 90%;
     height: 70vh;
-    background-color: rgba(0,0,0,1);
+    background-color: rgba(0,0,0,0.9);
     z-index: 3;
     animation: fade 0.4s linear 1;
     transition: 0.4s linear;
@@ -422,7 +427,7 @@
 
 .send-box h3 {
     font-size: 30px;
-    color: rgb(226, 107, 107);
+    color: rgb(154, 154, 230);
 }
 
 .pay-btn {
@@ -449,11 +454,24 @@
     color: white;
 }
 
+.anime {
+    animation: fade 0.4s linear 1;
+}
+
+.anime h5 {
+    color: rgb(221, 96, 96);
+}
 @keyframes fade {
     from{opacity: 0;}
     to{opacity: 1;}
 }
 
+
+.no-data {
+   width: 100%;
+   height: 30vh;
+   margin-top: 100px;
+}
 
 
 

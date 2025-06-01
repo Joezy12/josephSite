@@ -1972,6 +1972,7 @@ input:focus + label {
 .tran {
   margin-top: 20px;
   font-size: 22px;
+  text-align: center;
 }
 
 .whiter {
