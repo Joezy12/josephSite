@@ -34,11 +34,19 @@ function DashBoard() {
         fetchUserData()
     }, [])
 
+       function numberWithComma(x){
+        x = x.toString();
+        var pattern = /(-?\d+)(\d{3})/;
+        while (pattern.test(x))
+            x = x.replace(pattern, "$1,$2");
+        return x;
+    }
+
     const accountDetails = [
         {
             title: "Total Balance",
             icon: "bi-person-fill",
-            amount: `${userDetails ? userDetails.accBalance: ""}.00`,
+            amount: `${userDetails ? numberWithComma(userDetails.accBalance): ""}.00`,
             rate: "0.00",
             color: "#873DCF"
         },
