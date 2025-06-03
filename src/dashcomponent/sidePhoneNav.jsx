@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { auth } from "../firebaseAuth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { DoorBackOutlined, DoorSlidingOutlined } from "@mui/icons-material";
 
 function SidePhoneNav(props) {
     const theme = useTheme();
@@ -24,14 +25,14 @@ function SidePhoneNav(props) {
         color: colors.primary[100],
     }
 
-    const logOut = async()=> {
-        try{
-         await auth.signOut();
-         console.log("signed out")
-         navigate('..')
-         toast.success("logged Out", {position:"top-center"})
-        }catch(error) {
-        toast.error(error.message, {position: "top-center"})
+    const logOut = async () => {
+        try {
+            await auth.signOut();
+            console.log("signed out")
+            navigate('..')
+            toast.success("logged Out", { position: "top-center" })
+        } catch (error) {
+            toast.error(error.message, { position: "top-center" })
         }
     }
 
@@ -56,12 +57,16 @@ function SidePhoneNav(props) {
                     <p>Deposit</p>
                 </div>
                 </NavLink> */}
-               <NavLink to="/dash/withdrawal" style={navLinker} onClick={props.openNav}><div className="p-link">
+                <NavLink to="/dash/withdrawal" className="linkor" style={navLinker} onClick={props.openNav}><div className="p-link">
                     <ReceiptOutlinedIcon className="phoneI" />
                     <p>Withdrawal</p>
-                </div></NavLink> 
-                <div className="p-link" onClick={logOut}>
+                </div></NavLink>
+                <NavLink to="/dash/profile" className="linkor" style={navLinker} onClick={props.openNav}><div className="p-link">
                     <PersonOutlinedIcon className="phoneI" />
+                    <p>Profile</p>
+                </div></NavLink>
+                <div className="p-link" onClick={logOut}>
+                    <DoorSlidingOutlined className="phoneI" />
                     <p>Log out</p>
                 </div>
             </div>

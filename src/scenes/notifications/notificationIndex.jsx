@@ -15,24 +15,11 @@ function Notification() {
 
     const notifyData = [
         {
-            title: "Incoming profit alert",
+            title: "Welcome to FCFG",
             text: `a sum of $310 would be added to your profit balance in 3 days (21/05/2024) ${<br />}
             for more info contact our support team`
         },
-        {
-            title: "New Update",
-            text: `update 2.7.1 has been release, please visit our store and get it`
-        },
-        {
-            title: "Incoming profit alert",
-            text: `a sum of $310 would be added to your profit balance in 3 days (21/05/2024) ${<br />}
-            for more info contact our support team`
-        },
-        {
-            title: "Incoming profit alert",
-            text: `a sum of $310 would be added to your profit balance in 3 days (21/05/2024) ${<br />}
-            for more info contact our support team`
-        },
+       
     ]
 
     const showNotifications = notifyData.map((each)=> {

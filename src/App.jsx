@@ -18,6 +18,7 @@ import Deposit from "./scenes/deposit/depositIndex";
 import Withdrawal from "./scenes/withdrawal/withdrawalIndex";
 import Notification from "./scenes/notifications/notificationIndex";
 import { ToastContainer } from "react-toastify";
+import Profile from "./scenes/profile";
 
 
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="deposit" element={<Deposit />} />
         <Route path="withdrawal" element={<Withdrawal />} />
         <Route path="notification" element={<Notification />} />
+        <Route path="profile" element={<Profile />} />
     </Route>
     
 

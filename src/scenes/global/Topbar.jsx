@@ -35,16 +35,18 @@ function TopBar(prop) {
 
 
             <Box display="flex" className="top-icon-box">
-               
+
                 <NavLink to="/dash/notification">
                     <IconButton>
                         <NotificationsOutlinedIcon className="top-icons" />
                     </IconButton>
                 </NavLink>
-            
-                <IconButton>
-                    <PersonOutlinedIcon className="top-icons" />
-                </IconButton>
+
+                <NavLink to="/dash/profile">
+                    <IconButton>
+                        <PersonOutlinedIcon className="top-icons" />
+                    </IconButton>
+                </NavLink>
             </Box>
         </Box>
     )

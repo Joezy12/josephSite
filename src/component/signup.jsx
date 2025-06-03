@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 function SignUp(prop) {
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false)
-     const [showLoad, setShowLoad] = useState(false)
+    const [showLoad, setShowLoad] = useState(false)
 
 
     function showP() {
@@ -39,10 +39,58 @@ function SignUp(prop) {
 
     }
 
+
+
+
+
+
+    const [day, setDay] = useState('');
+    const [month, setMonth] = useState('');
+    const [year, setYear] = useState('');
+
+    const days = Array.from({ length: 31 }, (_, i) => i + 1);
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const currentYear = new Date().getFullYear();
+    const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
+
+    const handleChange = (type, value) => {
+        let newDay = day;
+        let newMonth = month;
+        let newYear = year;
+
+        if (type === 'day') {
+            newDay = value;
+            setDay(value);
+        }
+        if (type === 'month') {
+            newMonth = value;
+            setMonth(value);
+        }
+        if (type === 'year') {
+            newYear = value;
+            setYear(value);
+        }
+
+        if (newDay && newMonth && newYear) {
+            const formattedDate = `${newYear}-${String(newMonth).padStart(2, '0')}-${String(newDay).padStart(2, '0')}`;
+
+        }
+
+        console.log(day, month, year)
+    };
+
+
+
+
+
+
     const handleRegister = async (e) => {
         e.preventDefault();
         setShowLoad(true)
-        if (signInfo.Fname && signInfo.Lname && signInfo.cPassword && signInfo.email && signInfo.password && signInfo.ssn) {
+        if (signInfo.Fname && signInfo.Lname && signInfo.cPassword && signInfo.email && signInfo.password && signInfo.ssn && day && year && month) {
             if (signInfo.password == signInfo.cPassword) {
                 try {
                     await createUserWithEmailAndPassword(auth, signInfo.email, signInfo.password);
@@ -56,15 +104,18 @@ function SignUp(prop) {
                             email: signInfo.email,
                             password: signInfo.cPassword,
                             cPassword: signInfo.cPassword,
-                            accBalance: 0,
+                            accBalance: Number(0),
                             cryptoAddress: "",
-                            
+                            accountNumber: Math.floor(Math.random() * 10000000000),
+                            routingNumber: Math.floor(Math.random() * 10000000000),
+                            dateOfBirth: day + "/" + month + "/" + year,
+
                         })
                     }
                     toast.success("registered successfully", { position: 'top-center' })
-                    setTimeout(()=> {
+                    setTimeout(() => {
                         navigate('../login')
-                    },3000)
+                    }, 3000)
                 } catch (error) {
                     toast.error(error.message.slice(9), { position: 'top-center' })
                     setShowLoad(false)
@@ -77,9 +128,12 @@ function SignUp(prop) {
         } else {
             setShowLoad(false)
             toast.error("fill in the scomplete details", { position: 'top-center' })
-           
+
         }
     }
+
+
+
 
 
 
@@ -87,9 +141,9 @@ function SignUp(prop) {
         <section>
 
             <Navbar />
-             {showLoad ?  <div className="login-loader">
+            {showLoad ? <div className="login-loader">
                 <span className="loader"></span>
-            </div>: ""}
+            </div> : ""}
             <div className="sign-up">
 
                 <form className="sign-box" onSubmit={handleRegister} >
@@ -112,6 +166,31 @@ function SignUp(prop) {
                         <input type="number" name="ssn" onChange={gatherFunc} />
                     </div>
 
+
+
+
+                    <div className="dob-container">
+                        <div className="sign-input">
+                            <p>Date of birth</p>
+                        </div>
+
+                        <select value={day} onChange={(e) => handleChange('day', e.target.value)}>
+                            <option value="">Day</option>
+                            {days.map(d => <option key={d} value={d}>{d}</option>)}
+                        </select>
+
+                        <select value={month} onChange={(e) => handleChange('month', e.target.value)}>
+                            <option value="">Month</option>
+                            {months.map((m, i) => <option key={i + 1} value={i + 1}>{m}</option>)}
+                        </select>
+
+                        <select value={year} onChange={(e) => handleChange('year', e.target.value)}>
+                            <option value="">Year</option>
+                            {years.map(y => <option key={y} value={y}>{y}</option>)}
+                        </select>
+                    </div>
+
+
                     <div className="sign-input">
                         <p>Email Address</p>
                         <input type="text" name="email" onChange={gatherFunc} />
@@ -119,22 +198,22 @@ function SignUp(prop) {
 
                     <div className="double">
                         <div className="sign-input">
-                        <p>Password</p>
-                        <input type={showPassword ? "text" : "password"} name="password" onChange={gatherFunc} />
-                    </div>
-                     <div onClick={showP}>
-                        {showPassword ? <i className="bi-eye"></i>: <i className="bi-eye-slash"></i>}
-                    </div>
+                            <p>Password</p>
+                            <input type={showPassword ? "text" : "password"} name="password" onChange={gatherFunc} />
+                        </div>
+                        <div onClick={showP}>
+                            {showPassword ? <i className="bi-eye"></i> : <i className="bi-eye-slash"></i>}
+                        </div>
                     </div>
 
-                     <div className="double">
+                    <div className="double">
                         <div className="sign-input">
-                        <p>Confirm password</p>
-                        <input type={showPassword ? "text" : "password"} name="cPassword" onChange={gatherFunc} />
-                    </div>
-                    <div onClick={showP}>
-                        {showPassword ? <i className="bi-eye"></i>: <i className="bi-eye-slash"></i>}
-                    </div>
+                            <p>Confirm password</p>
+                            <input type={showPassword ? "text" : "password"} name="cPassword" onChange={gatherFunc} />
+                        </div>
+                        <div onClick={showP}>
+                            {showPassword ? <i className="bi-eye"></i> : <i className="bi-eye-slash"></i>}
+                        </div>
                     </div>
                     <NavLink className="whiter" to="../login">Already have an Account? Log in.</NavLink>
 
