@@ -27,6 +27,7 @@ function SignUp(prop) {
         email: "",
         password: "",
         cPassword: "",
+        phone: ""
     })
 
     function gatherFunc(event) {
@@ -109,7 +110,8 @@ function SignUp(prop) {
                             accountNumber: Math.floor(Math.random() * 10000000000),
                             routingNumber: Math.floor(Math.random() * 10000000000),
                             dateOfBirth: day + "/" + month + "/" + year,
-
+                            phone: signInfo.phone,
+                            cryptoAddress: "",
                         })
                     }
                     toast.success("registered successfully", { position: 'top-center' })
@@ -117,8 +119,13 @@ function SignUp(prop) {
                         navigate('../login')
                     }, 3000)
                 } catch (error) {
-                    toast.error(error.message.slice(9), { position: 'top-center' })
+                    if(error.message == "Firebase: Error (auth/network-request-failed).") {
+                         toast.error("No internet connection", { position: 'top-center' })
                     setShowLoad(false)
+                    }else{
+                    toast.error(error.message, { position: 'top-center' })
+                    setShowLoad(false)
+                    }
                 }
             } else {
                 setShowLoad(false)
@@ -127,7 +134,7 @@ function SignUp(prop) {
             }
         } else {
             setShowLoad(false)
-            toast.error("fill in the scomplete details", { position: 'top-center' })
+            toast.error("fill in the complete details", { position: 'top-center' })
 
         }
     }
@@ -194,6 +201,11 @@ function SignUp(prop) {
                     <div className="sign-input">
                         <p>Email Address</p>
                         <input type="text" name="email" onChange={gatherFunc} />
+                    </div>
+
+                    <div className="sign-input">
+                        <p>Phone number</p>
+                        <input type="text" name="phone" onChange={gatherFunc} placeholder=""/>
                     </div>
 
                     <div className="double">

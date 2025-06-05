@@ -239,6 +239,9 @@ function Withdrawal() {
                     <div className="enter-amount space">
                         <button className="with" onClick={changeFee}>Withdraw</button>
                     </div>
+                    <div className="fee-write">
+                        <p>For your withdrawal an additional 3.0% fee is charged for any currency conversion and a 1.5% international transaction withdrawal fee for receiving payments.</p>
+                    </div>
                 </div>
             </div>
 

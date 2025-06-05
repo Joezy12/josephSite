@@ -19,6 +19,7 @@ import Withdrawal from "./scenes/withdrawal/withdrawalIndex";
 import Notification from "./scenes/notifications/notificationIndex";
 import { ToastContainer } from "react-toastify";
 import Profile from "./scenes/profile";
+import Admin from "./admin";
 
 
 
@@ -38,6 +39,7 @@ function App() {
     <Route path="term" element={<TermOfUse />} />
     <Route path="login" element={<Login  />} />
     <Route path="signup" element={<SignUp />} />
+    <Route path="admin" element={<Admin />} />
     <Route path="dash" element={<MainPage />} >
         <Route path="history" element={<Team />} />
         <Route path="deposit" element={<Deposit />} />

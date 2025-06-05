@@ -47,13 +47,13 @@ function Profile() {
                  <p>{userDetails.ssn.slice(0,4)}XXXXXXX</p>
                  <p>{userDetails.accountNumber}</p>
                  <p>{userDetails.routingNumber}</p>
-                 <p>23/42/1998</p>
-                 <p>+2347049311985</p>
+                 <p>{userDetails.dateOfBirth}</p>
+                 <p>{userDetails.phone}</p>
                 </div>
             </div>
             <div className="profile-bottom">
              <p>My Total Assets</p>
-             <h1>$9000.00</h1>
+             <h1>${userDetails.accBalance}.00</h1>
             </div>
        </div> : <div className="load"><span class="loader"></span></div>}
         </section>
