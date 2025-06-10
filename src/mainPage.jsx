@@ -13,6 +13,7 @@ import { useState } from "react";
 import Withdrawal from "./scenes/withdrawal/withdrawalIndex";
 import Notification from "./scenes/notifications/notificationIndex";
 import Profile from "./scenes/profile";
+import Transfer from "./component/transfer";
 
 
 function MainPage() {
@@ -49,6 +50,7 @@ function MainPage() {
               {/* <Route path="/faq" element={<DashBoard />} /> */}
               {/* <Route path="/geography" element={<Geography/>} /> */}
               <Route path="/notification" element={<Notification />} />
+              <Route path="transfer" element={<Transfer />} />
             </Routes>
         </main>
         </section>

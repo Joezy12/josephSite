@@ -757,15 +757,160 @@
     border-radius: 5px;
 }
 
+.transfer-head h1 {
+    font-size: 30px;
+    text-align: center;
+    color: gold;
+}
+
+.fcfg {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.fcfg h2 {
+    color: gold;
+}
+
+.transfer {
+    padding: 10px 30px;
+}
+
+.transfer-box {
+    background-color: #131212;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 40px;
+    border-radius: 10px;
+}
+
+.transfer-box input {
+    height:60px;
+    background: transparent;
+    padding: 0px 6px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 217, 0, 0.459);
+}
+
+.transfer-box select {
+    height: 60px;
+    color: rgb(134, 131, 131);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 217, 0, 0.459);
+}
+
+.transfer-box button {
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color:  rgba(255, 217, 0, 0.911);
+    font-weight: 600;
+    font-size: 19px;
+}
+
+
+.rec-name {
+    color: rgb(43, 240, 43);
+    margin-top: 10px;
+}
+
+.rec-name h1{
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+.rec-name p {
+    font-size: 18px;
+}
+
+.rec-box {
+    background-color: #131212;
+    padding: 30px 15px 40px 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.rec-box h5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.dollar-amount {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dollar-amount h1 {
+    font-size: 30px;
+}
+
+.dollar-amount input {
+    height: 50px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid gold;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.for-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid gold;
+    width: 100%;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.reciepient {
+    animation: slider-in 0.3s linear 1;
+}
+
+.no-rec {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(245, 70, 70);
+    font-size: 25px;
+    flex-direction: column;
+    gap: 1rem;
+       animation: slider-in 0.3s linear 1;
+}
+
+.no-rec button {
+    width: 200px;
+    height: 40px;
+    background-color: rgb(245, 70, 70) ;
+    font-size: 17px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
 
 
 
+@keyframes slider-in {
+    from{transform: translate(100%, 0%);}
+    to{transform: translate(0%,0%);}
+}
 
 
-
-
-
-
+.sender {
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color:  rgba(255, 217, 0, 0.911);
+    font-weight: 600;
+    font-size: 19px;
+    width: 100%;
+    margin-top: 30px;
+}
 
 
 

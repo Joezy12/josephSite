@@ -7,6 +7,7 @@ import { auth, db } from "../firebaseAuth";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
+
 function SignUp(prop) {
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false)

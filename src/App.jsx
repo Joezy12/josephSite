@@ -20,6 +20,7 @@ import Notification from "./scenes/notifications/notificationIndex";
 import { ToastContainer } from "react-toastify";
 import Profile from "./scenes/profile";
 import Admin from "./admin";
+import Transfer from "./component/transfer";
 
 
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="withdrawal" element={<Withdrawal />} />
         <Route path="notification" element={<Notification />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="transfer" element={<Transfer />} />
     </Route>
     
 

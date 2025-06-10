@@ -61,6 +61,10 @@ function SidePhoneNav(props) {
                     <ReceiptOutlinedIcon className="phoneI" />
                     <p>Withdrawal</p>
                 </div></NavLink>
+                  <NavLink to="/dash/transfer" className="linkor" style={navLinker} onClick={props.openNav}><div className="p-link">
+                    <ReceiptOutlinedIcon className="phoneI" />
+                    <p>Transfer to FCFG</p>
+                </div></NavLink>
                 <NavLink to="/dash/profile" className="linkor" style={navLinker} onClick={props.openNav}><div className="p-link">
                     <PersonOutlinedIcon className="phoneI" />
                     <p>Profile</p>

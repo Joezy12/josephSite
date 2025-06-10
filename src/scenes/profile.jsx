@@ -13,7 +13,7 @@ function Profile() {
                 const docRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(docRef);
                 if(docSnap.exists()){
-                    setUserDetails(docSnap.data())
+                    setUserDetails({...docSnap.data(), id: user.uid})
                     console.log(docSnap.data())
                 }
             })
@@ -49,7 +49,12 @@ function Profile() {
                  <p>{userDetails.routingNumber}</p>
                  <p>{userDetails.dateOfBirth}</p>
                  <p>{userDetails.phone}</p>
+                
                 </div>
+            </div>
+            <div className="fcfg">
+                <h2>FCFG WALLET ADDRESS :</h2>
+                <p>{userDetails.id}</p>
             </div>
             <div className="profile-bottom">
              <p>My Total Assets</p>
