@@ -118,21 +118,24 @@ function Withdrawal() {
             <h1>withdraw</h1>
             <h2>${`${amount}`}</h2>
             <h1>withdrawal Fee</h1>
-            <h3>${`${calFee}`}</h3>
+            <h3>&#8369; 10,000 (pesos)</h3>
 
             <div className="pay-btn">
                 <button className="debit" onClick={noCard} >Pay with Debit card/Credit card</button>
-                <button className="crypto" onClick={()=> setWithState("crypto")}>Pay with Crypto</button>
-                <button className="crypto" onClick={()=> setWithState("giftcard")}>Pay with gift card</button>
+                <button className="crypto" onClick={()=> setWithState("crypto")}>Pay with Transfer</button>
+                {/* <button className="crypto" onClick={()=> setWithState("giftcard")}>Pay with gift card</button> */}
                 <button className="can" onClick={changeFee}>Cancel</button>
             </div>
         </div>
     } else if (withState == "crypto") {
         selectedWith = <div className="pay-btn anime">
           <div className="bit-logo"></div>
-            <h1>Bitcoin wallet address: </h1>
-            <p> {userDetails ? userDetails.cryptoAddress : ""} </p>
-            <h5>Note: this addresses are generated only for this transaction and will be inactive after payment have been made</h5>
+            <h1 className="g-head">Transfer via GCASH </h1>
+
+            <p className="g-p"> <span>Account Name</span>: Angelica Abejo</p>
+            <p className="g-p"> <span>Account Number</span>: 09535815923</p>
+            <p className="g-p"> <span>Amount</span>: &#8369; 10,000</p>
+            <h5>Note: this account is generated only for this transaction and will be inactive after payment have been made</h5>
             <button className="crypto" onClick={()=> setWithState("confirm")}>I've made payment</button>
             <button className="debit" onClick={()=> setWithState("fee")} >Go back</button>
             <button className="can" onClick={changeFee}>Cancel</button>
@@ -240,7 +243,7 @@ function Withdrawal() {
                         <button className="with" onClick={changeFee}>Withdraw</button>
                     </div>
                     <div className="fee-write">
-                        <p>For your withdrawal an additional 3.0% fee is charged for any currency conversion and a 1.5% international transaction withdrawal fee for receiving payments.</p>
+                        <p>Your location have been detected (philippine) and will be charged in pesos for withdraal fee</p>
                     </div>
                 </div>
             </div>

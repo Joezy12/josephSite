@@ -497,18 +497,28 @@
 }
 
 .bit-logo {
-    width: 100%;
+    width: 40%;
     height: 90px;
   
-    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfvUzlThh8cdjMghD68Hm4yifxTZ4mnGTMPg&s");
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqCZgzMVVeRjq8ZRIK2LO4DWK9WoW26gyaPw&s");
     background-size: cover;
     background-position: center;
+    border-radius: 10px;
 }
 
 .no-data {
    width: 100%;
    height: 30vh;
    margin-top: 100px;
+}
+
+.g-p {
+    font-size: 18px;
+}
+
+.g-p span {
+    font-weight: 800;
+    font-size: 20px;
 }
 
 
@@ -912,6 +922,19 @@
     margin-top: 30px;
 }
 
+
+.g-cash {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.g-head {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
 
 
 
