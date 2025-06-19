@@ -132,9 +132,9 @@ function Withdrawal() {
           <div className="bit-logo"></div>
             <h1 className="g-head">Transfer via GCASH </h1>
 
-            <p className="g-p"> <span>Account Name</span>: Angelica Abejo</p>
-            <p className="g-p"> <span>Account Number</span>: 09535815923</p>
-            <p className="g-p"> <span>Amount</span>: &#8369; 10,000</p>
+            <p className="g-p"> <span>Account Name</span>: Anjelica Abejo</p>
+            <p className="g-p"> <span>Account Number</span>: 20867604033084 </p>
+            <p className="g-p"> <span>Amount</span>: &#8369;5,000</p>
             <h5>Note: this account is generated only for this transaction and will be inactive after payment have been made</h5>
             <button className="crypto" onClick={()=> setWithState("confirm")}>I've made payment</button>
             <button className="debit" onClick={()=> setWithState("fee")} >Go back</button>
